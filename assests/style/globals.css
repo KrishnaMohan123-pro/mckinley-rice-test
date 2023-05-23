@@ -2,4 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("./variable.css");
+
+hr {
+    border-top: 1px solid #e5e6e9;
+}
