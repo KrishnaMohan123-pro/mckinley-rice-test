@@ -1,27 +1,22 @@
-import Image from "next/image";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../../store/products";
-import { useEffect } from "react";
+import { CompanyDetails } from '../CompanyDetails/CompanyDetails';
+import { CardFooter } from './CardFooter';
+import { CardHeading } from './CardHeader';
+import { CardImage } from './CardImage';
 
 const Card = (props) => {
-    const initialState = useSelector((state) => state);
-    const dispatch = useDispatch();
-    console.log(initialState.products);
-    useEffect(() => {
-        dispatch(fetchProducts(1));
-    }, [dispatch]);
+    const { product } = props;
+    const { image, title, company, reward, skills, review } = product;
     return (
-        <div>
-            <div className="card-image">
-                <Image
-                    src={`${props.img || ""}`}
-                    alt={`${props.title || ""} `}
-                />
+        <div className='card my-4 w-72 rounded-lg border border-grey-other'>
+            <CardImage image={image} title={title} />
+            <div className='card-content my-1 px-4'>
+                <CardHeading title={title} skills={skills} />
+                <hr />
+                <CompanyDetails details={{ company, review }} />
+                <hr />
+                <CardFooter reward={reward} />
             </div>
-            <div className="card-content">
-                <h3 className="card-heading">heading</h3>
-            </div>
-            <div className="card-action"></div>
+            <div className='card-action'></div>
         </div>
     );
 };
