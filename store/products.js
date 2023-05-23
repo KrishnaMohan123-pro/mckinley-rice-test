@@ -1,20 +1,43 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
     isLoading: false,
     products: [],
 };
-const products = createSlice({
-    name: "show",
+
+export const getProducts = createAsyncThunk(
+    'fetch/products',
+    async ({ pageNumber }) => {
+        const response = await fetch(
+            'https://cea13314-94c5-4b7f-b96f-546f2fb397c9.mock.pstmn.io/jptest?page=' +
+                pageNumber
+        );
+        const data = await response.json();
+        return data;
+    }
+);
+const ProductsSlice = createSlice({
+    name: 'show',
     initialState,
     reducers: {
-        fetchProducts: createAsyncThunk("products/fetchProducts", async () => {
-            const response = await client.get(
-                "https://cea13314-94c5-4b7f-b96f-546f2fb397c9.mock.pstmn.io/jptest?page=1"
+        getName: (state) => {
+            state.products = ['Krishna'];
+        },
+    },
+    extraReducers: {
+        [getProducts.fulfilled]: (state, action) => {
+            state.products = state.products.concat(
+                action.payload.data.recruits
             );
-            return response.data;
-        }),
+            state.isLoading = false;
+        },
+        [getProducts.pending]: (state, action) => {
+            state.isLoading = true;
+        },
+        [getProducts.rejected]: (state, action) => {
+            state.isLoading = false;
+        },
     },
 });
 
-export const { fetchProducts } = products.actions;
-export default products.reducer;
+// export const { getName, fetchProducts } = ProductsSlice.actions;
+export default ProductsSlice.reducer;
