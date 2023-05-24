@@ -11,7 +11,10 @@ export const CardHeading = (props) => {
                 {skills.map((s, i) => {
                     if (i < 4)
                         return (
-                            <span key={i} className='text-xs'>
+                            <span
+                                key={i}
+                                className='text-xs text-grey-secondary'
+                            >
                                 {s} {i < 3 ? ', ' : ''}
                             </span>
                         );
