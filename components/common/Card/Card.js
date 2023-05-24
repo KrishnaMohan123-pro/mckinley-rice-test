@@ -7,7 +7,7 @@ const Card = (props) => {
     const { product } = props;
     const { image, title, company, reward, skills, review } = product;
     return (
-        <div className='card my-4 w-72 rounded-lg border border-grey-other hover:scale-105 transition-transform cursor-pointer'>
+        <div className='card my-4 w-72 rounded-lg border border-grey-other hover:scale-105 transition-transform'>
             <CardImage image={image} title={title} />
             <div className='card-content my-1 px-4'>
                 <CardHeading title={title} skills={skills} />
