@@ -23,19 +23,19 @@ const ProductsSlice = createSlice({
             state.products = ['Krishna'];
         },
     },
-    extraReducers: {
-        [getProducts.fulfilled]: (state, action) => {
+    extraReducers: (builder) => {
+        builder.addCase(getProducts.fulfilled, (state, action) => {
             state.products = state.products.concat(
                 action.payload.data.recruits
             );
             state.isLoading = false;
-        },
-        [getProducts.pending]: (state, action) => {
+        });
+        builder.addCase(getProducts.pending, (state, action) => {
             state.isLoading = true;
-        },
-        [getProducts.rejected]: (state, action) => {
+        });
+        builder.addCase(getProducts.rejected, (state, action) => {
             state.isLoading = false;
-        },
+        });
     },
 });
 
