@@ -28,13 +28,14 @@ const index = () => {
     useEffect(() => {
         dispatch(getProducts({ pageNumber: page }));
     }, [dispatch, page]);
-    // console.log(state.products);
+
     if (isLoading && products.length === 0)
         return (
             <div className='container mx-auto pt-7 text-center'>
                 <Loader />
             </div>
         );
+
     return (
         <>
             <div className='container mx-auto pt-7 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3'>
