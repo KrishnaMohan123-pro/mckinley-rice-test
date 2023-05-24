@@ -38,7 +38,9 @@ export const CompanyDetails = (props) => {
                             <br />
                             <span className='inline-flex items-center justify-items-center mx-auto '>
                                 <StarLogo />
-                                <span class='font-semibold'>{r.rating}</span>
+                                <span className='font-semibold'>
+                                    {r.rating}
+                                </span>
                             </span>
                         </div>
                     );
