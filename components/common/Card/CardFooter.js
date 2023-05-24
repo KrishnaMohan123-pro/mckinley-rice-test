@@ -1,4 +1,4 @@
-import { WonSymbol } from '../../assests/WonSymbol';
+import { WonSymbol } from '../../../assests/WonSymbol';
 
 export const CardFooter = (props) => {
     const { reward } = props;

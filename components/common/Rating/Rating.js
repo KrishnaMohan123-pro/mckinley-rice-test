@@ -1,5 +1,5 @@
 import React from 'react';
-import { StarLogo } from '../../assests/StarLogo';
+import { StarLogo } from '../../../assests/StarLogo';
 
 export const Rating = (props) => {
     const { rating, variant, count } = props;

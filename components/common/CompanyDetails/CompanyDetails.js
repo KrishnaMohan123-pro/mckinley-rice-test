@@ -1,4 +1,4 @@
-import { StarLogo } from '../../assests/StarLogo';
+import { StarLogo } from '../../../assests/StarLogo';
 import { Rating } from '../Rating/Rating';
 
 export const CompanyDetails = (props) => {
